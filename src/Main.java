@@ -34,6 +34,10 @@ public class Main {
         //d
         GameProcessor.countGamesPerCity(games, outputFilePath);
 
+        //e
+        List<Game> sortedGames = GameProcessor.sortGamesChronologically(games);
+        System.out.println("--- Games Sorted Chronologically ---");
+        sortedGames.forEach(System.out::println);
 
         scanner.close();
     }
