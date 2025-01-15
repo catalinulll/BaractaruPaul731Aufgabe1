@@ -1,15 +1,22 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.List;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        String filePath = "C:\\Users\\Catalin\\Downloads\\BaractaruPaul731Aufgabe1\\src\\spielorte.tsv";
+        String outputFilePath = "C:\\Users\\Catalin\\Downloads\\BaractaruPaul731Aufgabe1\\src\\spielanzahl.txt";
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        List<Game> games = TSVReader.readGamesFromTSV(filePath);
+
+        //a
+        System.out.println("--- All Games ---");
+        games.forEach(System.out::println);
+
+        Scanner scanner = new Scanner(System.in);
+
+
+
+        scanner.close();
     }
 }
+
