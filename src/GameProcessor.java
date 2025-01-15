@@ -20,6 +20,30 @@ public class GameProcessor {
     }
 
 
+    public static void countGamesPerCity(List<Game> games, String outputFilePath) {
+        Map<String, Long> cityCounts = games.stream()
+                .collect(Collectors.groupingBy(Game::getCity, Collectors.counting()));
+
+        List<Map.Entry<String, Long>> sortedCities = cityCounts.entrySet().stream()
+                .sorted((e1, e2) -> {
+                    int countComparison = e2.getValue().compareTo(e1.getValue());
+                    if (countComparison == 0) {
+                        return e1.getKey().compareTo(e2.getKey());
+                    }
+                    return countComparison;
+                })
+                .collect(Collectors.toList());
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath))) {
+            for (Map.Entry<String, Long> entry : sortedCities) {
+                writer.write(entry.getKey() + "&" + entry.getValue());
+                writer.newLine();
+            }
+            System.out.println("Game counts per city saved to " + outputFilePath);
+        } catch (IOException e) {
+            System.err.println("Error writing to file: " + e.getMessage());
+        }
+    }
 
     public static List<Game> sortGamesChronologically(List<Game> games) {
         return games.stream()

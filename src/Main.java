@@ -31,6 +31,8 @@ public class Main {
         System.out.println("--- Games in " + city + " after " + minDate + " ---");
         filteredByCityAndDate.forEach(System.out::println);
 
+        //d
+        GameProcessor.countGamesPerCity(games, outputFilePath);
 
 
         scanner.close();
