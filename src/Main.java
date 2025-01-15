@@ -21,6 +21,16 @@ public class Main {
         System.out.println("--- Games with Capacity >= " + minCapacity + " ---");
         filteredByCapacity.forEach(System.out::println);
 
+        //c
+        System.out.print("\nEnter city: ");
+        scanner.nextLine();
+        String city = scanner.nextLine();
+        System.out.print("Enter minimum date (YYYY-MM-DD): ");
+        String minDate = scanner.nextLine();
+        List<Game> filteredByCityAndDate = GameProcessor.filterGamesByCityAndDate(games, city, minDate);
+        System.out.println("--- Games in " + city + " after " + minDate + " ---");
+        filteredByCityAndDate.forEach(System.out::println);
+
 
 
         scanner.close();

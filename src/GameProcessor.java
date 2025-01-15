@@ -12,6 +12,14 @@ public class GameProcessor {
                 .collect(Collectors.toList());
     }
 
+    public static List<Game> filterGamesByCityAndDate(List<Game> games, String city, String minDate) {
+        return games.stream()
+                .filter(game -> game.getCity().equalsIgnoreCase(city) && game.getDate().compareTo(minDate) > 0)
+                .sorted(Comparator.comparing(Game::getDate))
+                .collect(Collectors.toList());
+    }
+
+
 
     public static List<Game> sortGamesChronologically(List<Game> games) {
         return games.stream()
