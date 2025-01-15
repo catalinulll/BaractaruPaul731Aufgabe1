@@ -14,6 +14,13 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
+        //b
+        System.out.print("\nEnter minimum capacity: ");
+        int minCapacity = scanner.nextInt();
+        List<Game> filteredByCapacity = GameProcessor.filterGamesByCapacity(games, minCapacity);
+        System.out.println("--- Games with Capacity >= " + minCapacity + " ---");
+        filteredByCapacity.forEach(System.out::println);
+
 
 
         scanner.close();

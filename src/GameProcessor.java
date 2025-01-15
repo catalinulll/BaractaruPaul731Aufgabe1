@@ -6,6 +6,12 @@ import java.util.stream.Collectors;
 
 public class GameProcessor {
 
+    public static List<Game> filterGamesByCapacity(List<Game> games, int minCapacity) {
+        return games.stream()
+                .filter(game -> game.getCapacity() >= minCapacity)
+                .collect(Collectors.toList());
+    }
+
 
     public static List<Game> sortGamesChronologically(List<Game> games) {
         return games.stream()
